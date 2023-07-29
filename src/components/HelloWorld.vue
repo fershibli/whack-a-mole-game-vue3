@@ -1,5 +1,9 @@
 <template>
   <div class="game-container">
+    <div class="header">
+      <div class="score">Score: {{ score }}</div>
+      <div class="timer">Time Left: {{ timeLeft }}</div>
+    </div>
     <div class="hole" v-for="(mole, index) in moles" :key="index">
       <div class="mole" v-if="mole.show" @click="whack(index)"></div>
     </div>
@@ -90,5 +94,14 @@ export default {
 
 .mole:hover {
   top: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
 }
 </style>
