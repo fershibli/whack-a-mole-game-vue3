@@ -40,8 +40,12 @@ export default {
 
       setTimeout(() => {
         this.moles[index].show = false;
-        this.showRandomMole();
       }, 800 + Math.random() * 500);
+
+      // Schedule the next mole appearance
+      setTimeout(() => {
+        this.showRandomMole();
+      }, 1000 + Math.random() * 2000);
     },
     whack(index) {
       if (this.moles[index].show) {
