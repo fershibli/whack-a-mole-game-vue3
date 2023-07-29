@@ -16,7 +16,9 @@
 export default {
   data() {
     return {
-      moles: Array(9).fill({ show: false }), // 9 holes for moles
+      moles: Array(9)
+        .fill({ show: false })
+        .map((mole) => ({ ...mole })), // 9 holes for moles
       score: 0,
       timeLeft: 30, // 30 seconds game time
       intervalId: null,
@@ -43,6 +45,7 @@ export default {
     showRandomMole() {
       const index = Math.floor(Math.random() * this.moles.length);
       this.moles[index].show = true;
+      console.log(this.moles);
 
       setTimeout(() => {
         this.moles[index].show = false;
@@ -58,6 +61,7 @@ export default {
         this.moles[index].show = false;
         this.score++;
       }
+      console.log(index);
     },
   },
 };
