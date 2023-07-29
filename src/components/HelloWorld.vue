@@ -4,8 +4,10 @@
       <div class="score">Score: {{ score }}</div>
       <div class="timer">Time Left: {{ timeLeft }}</div>
     </div>
-    <div class="hole" v-for="(mole, index) in moles" :key="index">
-      <div class="mole" v-if="mole.show" @click="whack(index)"></div>
+    <div class="moles-container">
+      <div class="hole" v-for="(mole, index) in moles" :key="index">
+        <div class="mole" v-if="mole.show" @click="whack(index)"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -64,9 +66,25 @@ export default {
 <style>
 .game-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   width: 400px;
   margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.moles-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .hole {
@@ -94,14 +112,5 @@ export default {
 
 .mole:hover {
   top: 0;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
 }
 </style>
