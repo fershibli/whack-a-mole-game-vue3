@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app">
+    <h1>Whack-a-Mole Game</h1>
+    <HelloWorld ref="game" />
+    <button @click="startGame" v-if="!gameStarted">Start Game</button>
+  </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: "App",
   components: {
     HelloWorld,
   },
+  data() {
+    return {
+      gameStarted: false,
+    };
+  },
+  methods: {
+    startGame() {
+      this.$refs.game.startGame();
+      this.gameStarted = true;
+    },
+  },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
